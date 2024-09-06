@@ -8,14 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var showAlert = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            TabView {
+                Home_Screen()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                Search_Screen()
+                    .tabItem {
+                        Label("Search", systemImage: "magnifyingglass")
+                    }
+                Favourites_Screen()
+                    .tabItem {
+                        Label("Favourites",systemImage: "star")
+                    }
+                News_Screen()
+                    .tabItem {
+                        Label("News", systemImage: "newspaper")
+                    }
+            }
         }
-        .padding()
+        .onAppear {
+            self.showAlert = true
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Disclaimer"),
+                message: Text("Disclaimer text here")
+            )
+        }
     }
 }
 
