@@ -38,7 +38,8 @@ struct ContentView: View {
         .alert(isPresented: $showAlert) {
             Alert(
                 title: Text("Disclaimer"),
-                message: Text("Disclaimer text here")
+                message: Text("This app is for informational purposes only. Do not use it to make financial decisions. Creators and developers of this app are not liable for any financial losses incurred."),
+                dismissButton: .default(Text("I Understand"))
             )
         }
     }
