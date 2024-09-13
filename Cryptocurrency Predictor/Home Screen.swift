@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct Home_Screen: View {
+    
     var body: some View {
         VStack {
             Text("Home Screen")
+                
+            
         }
     }
 }

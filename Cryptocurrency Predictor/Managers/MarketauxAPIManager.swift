@@ -9,19 +9,19 @@ import Foundation
 
 class MarketauxAPI: ObservableObject {
     static let shared = MarketauxAPI()
-    private init () {}
-    private let baseURL: String = "https://api.marketaux.com/v1/crypto/prices"
+    private let baseURL: String = "https://api.marketaux.com/v1/entity/search"
     private let apiToken: String = "bHraR8XR9eGBf6zK4xtq3BFDs9x0ik21MhbsTzek"
     
-    func getCryptoPrice(query: String, completion: @escaping (CryptoPrice?) -> Void) {
-        let query = "\(baseURL)?symbol=BTC&api_token=\(apiToken)"
+    @Published var cryptos: [Crypto] = []
+    
+    func getCrypto(query: String) {
         
-        guard let url = URL(string: baseURL + query) else {
-            print("Invalid URL")
-            return
-        }
+        guard !query.isEmpty else { return }
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let urlString = "\(baseURL)?search=\(query)&api_token=\(apiToken)"
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
                 return
@@ -33,19 +33,13 @@ class MarketauxAPI: ObservableObject {
             }
             
             do {
-                let decoder = JSONDecoder()
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print("Response JSON: \(json)")
-                
-                let result = try decoder.decode(CryptoPrice.self, from: data)
-                completion(result)
+                let result = try JSONDecoder().decode(CryptoInfo.self, from: data)
+                DispatchQueue.main.async {
+                    self.cryptos = result.data
+                }
             } catch {
-                print("Error decoding JSON: \(error)")
-                print("Response data: \(String(data: data, encoding: .utf8) ?? "Unable to convert data to string")")
-                completion(nil)
+                print("Error decoding JSON: \(error.localizedDescription)")
             }
-            
-        }
-        task.resume()
+        }.resume()
     }
 }

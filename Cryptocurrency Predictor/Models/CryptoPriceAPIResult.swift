@@ -7,7 +7,13 @@
 
 import Foundation
 
-struct CryptoPrice: Codable {
+struct CryptoInfo: Codable {
+    let data: [Crypto]
+}
+
+struct Crypto: Codable, Identifiable {
+    let id: Int
+    let name: String
     let symbol: String
-    let price: Double
+    let type: String
 }
