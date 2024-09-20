@@ -13,30 +13,35 @@ struct Search_Screen: View {
     @ObservedObject private var apiManager = MarketauxAPI.shared
     
     var body: some View {
-        VStack {
-            Text("Search Crypto")
-                .font(.title)
-                .bold()
-                .padding()
-            
-            Form {
-                TextField("Enter Crypto", text: $search)
-                    .onChange(of: search) { oldValue, newValue in
-                        apiManager.getCrypto(query: newValue)
-                    }
+        NavigationStack{
+            VStack {
+                Text("Search Crypto")
+                    .font(.title)
+                    .bold()
+                    .padding()
+            }
+            .padding()
+            VStack {
                 
-                List(apiManager.cryptos) { crypto in
-                    VStack {
-                        Text(crypto.name)
-                            .bold()
-                        Text("Symbol: \(crypto.symbol)")
-                        Text("Type: \(crypto.type)")
+                Form {
+                    TextField("Enter Crypto", text: $search)
+                        .onChange(of: search) { oldValue, newValue in
+                            apiManager.getCrypto(query: newValue)
+                        }
+                    List(apiManager.cryptos) { crypto in
+                        VStack {
+                            Text(crypto.name)
+                                .bold()
+                            Text("Symbol: \(crypto.symbol)")
+                            Text("Country: \(crypto.country)")
+                        }
                     }
                 }
             }
         }
     }
 }
+
 
 
 

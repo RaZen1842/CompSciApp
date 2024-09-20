@@ -40,6 +40,7 @@ class MarketauxAPI: ObservableObject {
             } catch {
                 print("Error decoding JSON: \(error.localizedDescription)")
             }
+            
         }.resume()
     }
 }

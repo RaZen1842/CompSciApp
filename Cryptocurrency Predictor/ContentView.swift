@@ -12,7 +12,6 @@ struct ContentView: View {
     @State private var showAlert = false
     
     var body: some View {
-        NavigationStack {
             TabView {
                 Home_Screen()
                     .tabItem {
@@ -31,7 +30,7 @@ struct ContentView: View {
                         Label("News", systemImage: "newspaper")
                     }
             }
-        }
+        
         .onAppear {
             self.showAlert = true
         }
