@@ -16,4 +16,5 @@ struct Crypto: Codable, Identifiable {
     let name: String
     let symbol: String
     let country: String
+    var type: String
 }

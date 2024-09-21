@@ -34,6 +34,7 @@ struct Search_Screen: View {
                                 .bold()
                             Text("Symbol: \(crypto.symbol)")
                             Text("Country: \(crypto.country)")
+                            Text("Type: \(crypto.type)")
                         }
                     }
                 }
