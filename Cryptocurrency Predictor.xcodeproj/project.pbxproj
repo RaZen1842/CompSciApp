@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8588618E2CA550D1009FF132 /* FinancialDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8588618D2CA550D1009FF132 /* FinancialDataAPI.swift */; };
+		8588618E2CA550D1009FF132 /* FinancialDataAPIManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8588618D2CA550D1009FF132 /* FinancialDataAPIManger.swift */; };
 		858861902CA55105009FF132 /* FinancialDataAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8588618F2CA55105009FF132 /* FinancialDataAPIResult.swift */; };
 		8598301F2C8B3B20006E4B26 /* Cryptocurrency_PredictorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8598301E2C8B3B20006E4B26 /* Cryptocurrency_PredictorApp.swift */; };
 		859830212C8B3B20006E4B26 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859830202C8B3B20006E4B26 /* ContentView.swift */; };
@@ -42,7 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8588618D2CA550D1009FF132 /* FinancialDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialDataAPI.swift; sourceTree = "<group>"; };
+		8588618D2CA550D1009FF132 /* FinancialDataAPIManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialDataAPIManger.swift; sourceTree = "<group>"; };
 		8588618F2CA55105009FF132 /* FinancialDataAPIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialDataAPIResult.swift; sourceTree = "<group>"; };
 		8598301B2C8B3B20006E4B26 /* Cryptocurrency Predictor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cryptocurrency Predictor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8598301E2C8B3B20006E4B26 /* Cryptocurrency_PredictorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptocurrency_PredictorApp.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				85BDED202C92DD92000C9B44 /* MarketauxAPIManager.swift */,
-				8588618D2CA550D1009FF132 /* FinancialDataAPI.swift */,
+				8588618D2CA550D1009FF132 /* FinancialDataAPIManger.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -305,7 +305,7 @@
 				859830512C8B435A006E4B26 /* News Screen.swift in Sources */,
 				8598301F2C8B3B20006E4B26 /* Cryptocurrency_PredictorApp.swift in Sources */,
 				858861902CA55105009FF132 /* FinancialDataAPIResult.swift in Sources */,
-				8588618E2CA550D1009FF132 /* FinancialDataAPI.swift in Sources */,
+				8588618E2CA550D1009FF132 /* FinancialDataAPIManger.swift in Sources */,
 				8598304B2C8B430E006E4B26 /* Home Screen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,5 +8,5 @@
 import Foundation
 
 class FinancialDataAPI: ObservableObject {
-    
+    //Work on this in own time
 }
