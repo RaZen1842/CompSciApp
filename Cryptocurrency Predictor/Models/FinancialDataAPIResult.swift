@@ -10,7 +10,7 @@ import Foundation
 struct CryptoFinancialData: Codable, Identifiable {
     var id: UUID { UUID() }
     let symbol: String
-    let label: String
+    let name: String
     let price: Double
     let change: Double
     let changesPercentage: Double

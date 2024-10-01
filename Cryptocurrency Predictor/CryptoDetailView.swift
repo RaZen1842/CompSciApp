@@ -14,10 +14,10 @@ struct CryptoDetailView: View {
     var body: some View {
         VStack {
             if let crypto = apiManager.cryptoFinancialData {
-                Text("Name: \(crypto.label)")
+                Text("Name: \(crypto.name)")
                 Text("Symbol: \(crypto.symbol)")
                 Text("Price: $\(crypto.price, specifier: "%.2f")")
-                Text("Change: \(crypto.changesPercentage, specifier: "%.2f")")
+                Text("Change: \(crypto.changesPercentage, specifier: "%.2f")%")
             } else {
                 Text("Loading for \(symbol)...")
             }

@@ -33,9 +33,6 @@ struct Search_Screen: View {
                             VStack {
                                 Text(crypto.name)
                                     .bold()
-                                Text("Symbol: \(crypto.symbol)")
-                                Text("Country: \(crypto.country)")
-                                Text("Type: \(crypto.type)")
                             }
                         }
                     }
