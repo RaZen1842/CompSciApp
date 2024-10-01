@@ -29,12 +29,14 @@ struct Search_Screen: View {
                             apiManager.getCrypto(query: newValue)
                         }
                     List(apiManager.cryptos) { crypto in
-                        VStack {
-                            Text(crypto.name)
-                                .bold()
-                            Text("Symbol: \(crypto.symbol)")
-                            Text("Country: \(crypto.country)")
-                            Text("Type: \(crypto.type)")
+                        NavigationLink(destination: CryptoDetailView(symbol: crypto.symbol)) {
+                            VStack {
+                                Text(crypto.name)
+                                    .bold()
+                                Text("Symbol: \(crypto.symbol)")
+                                Text("Country: \(crypto.country)")
+                                Text("Type: \(crypto.type)")
+                            }
                         }
                     }
                 }

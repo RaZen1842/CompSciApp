@@ -7,19 +7,13 @@
 
 import Foundation
 
-struct AllCrpytoFinancialData: Codable {
-    let data: [CryptoFinancialData]
-}
-
 struct CryptoFinancialData: Codable, Identifiable {
     var id: UUID { UUID() }
     let symbol: String
-    let date: String
     let label: String
+    let price: Double
     let change: Double
-    let changePercent: Double
-    let high: Double
-    let open: Double
-    let low: Double
-    let close: Double
+    let changesPercentage: Double
+    let dayHigh: Double
+    let dayLow: Double
 }
