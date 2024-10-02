@@ -10,9 +10,11 @@ import XCTest
 
 final class Cryptocurrency_PredictorTests: XCTestCase {
     
+    //MARKETAUX API TESTS
+    
     var api: MarketauxAPI!
 
-        override func setUpWithError() throws {
+    override func setUpWithError() throws {
             api = MarketauxAPI()
         }
     
@@ -35,5 +37,26 @@ final class Cryptocurrency_PredictorTests: XCTestCase {
             waitForExpectations(timeout: 5, handler: nil)
         }
     
+    //FINANCIAL DATA API TESTS
+    
+    var financialApi: FinancialDataAPI!
+    
+    override func setUpFinancialDataApiWithError() throws {
+        financialApi = FinancialDataAPI()
+    }
+    
+    override func tearDownFinancialApiWithError() throws {
+        financialApi = nil
+    }
+    
+    func testFetchFinancialDataForCryptos() throws {
+        let expectation = self.expectation(description: "Fetching financial data for BTCUSD from API")
+        
+        financialApi.getFinancialData(symbol: "BTCUSD")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            XCTAssertFalse(self.financialApi.cryptoFinancialData.isEmpty, "The class shouldn't be empty after fetching data")
+        }
+    }
     
 }
