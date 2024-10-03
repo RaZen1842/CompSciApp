@@ -11,6 +11,8 @@ struct CryptoDetailView: View {
     let symbol: String
     @ObservedObject var apiManager = FinancialDataAPI.shared
     
+    @State private var isLoading = true
+    
     var body: some View {
         VStack {
             if let crypto = apiManager.cryptoFinancialData {
@@ -24,7 +26,11 @@ struct CryptoDetailView: View {
         }
         .onAppear {
             if let adjustedSymbol = symbol.components(separatedBy: ":").last {
-                apiManager.getFinancialData(symbol: adjustedSymbol)
+                apiManager.getFinancialData(symbol: adjustedSymbol) { success in
+                    DispatchQueue.main.async {
+                        isLoading = false
+                    }
+                }
             }
         }
         .navigationTitle(symbol)
