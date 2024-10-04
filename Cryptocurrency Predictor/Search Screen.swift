@@ -18,16 +18,25 @@ struct Search_Screen: View {
                 Text("Search Crypto")
                     .font(.title)
                     .bold()
-                    .padding()
             }
             .padding()
             VStack {
-                
                 Form {
-                    TextField("Enter Crypto", text: $search)
-                        .onChange(of: search) { oldValue, newValue in
-                            apiManager.getCrypto(query: newValue)
+                    Section {
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.gray)
+                            
+                            TextField("Search Currency", text: $search)
+                            
+                            Button(action: {
+                                apiManager.getCrypto(query: search)
+                            }) {
+                                Text("Search")
+                            }
                         }
+                    }
+                    
                     List(apiManager.cryptos) { crypto in
                         NavigationLink(destination: CryptoDetailView(symbol: crypto.symbol)) {
                             VStack {

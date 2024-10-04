@@ -35,7 +35,9 @@ class MarketauxAPI: ObservableObject {
             do {
                 let result = try JSONDecoder().decode(CryptoInfo.self, from: data)
                 DispatchQueue.main.async {
-                    self.cryptos = result.data.filter { $0.type == "cryptocurrency" }
+                    self.cryptos = result.data.filter {
+                        $0.type == "cryptocurrency" && ($0.name.contains("USD"))
+                    }
                 }
             } catch {
                 print("Error decoding JSON: \(error.localizedDescription)")
