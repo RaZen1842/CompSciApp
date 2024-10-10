@@ -18,4 +18,10 @@ struct CryptoHistoricalData: Codable, Identifiable {
     let changePercent: Double
     let close: Double
     let label: String
+    
+    var newDate: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: date)
+    }
 }

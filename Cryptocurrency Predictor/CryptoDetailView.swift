@@ -9,13 +9,14 @@ import SwiftUI
 
 struct CryptoDetailView: View {
     let symbol: String
-    @ObservedObject var apiManager = FinancialDataAPI.shared
+    @ObservedObject var financialApiManager = FinancialDataAPI.shared
+    @ObservedObject var historicalApiManager = HistoricalFinancialDataAPI.shared
     
     @State private var isLoading = true
     
     var body: some View {
         VStack {
-            if let crypto = apiManager.cryptoFinancialData {
+            if let crypto = financialApiManager.cryptoFinancialData {
                 Text("\(crypto.name)")
                     .font(.title)
                     .bold()
@@ -31,7 +32,7 @@ struct CryptoDetailView: View {
             Section {
                 if isLoading {
                     Text("Looking for \(symbol)")
-                } else if let crypto = apiManager.cryptoFinancialData {
+                } else if let crypto = financialApiManager.cryptoFinancialData {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Name: \(crypto.name)")
                         Text("Symbol: \(crypto.symbol)")
@@ -44,7 +45,7 @@ struct CryptoDetailView: View {
             }
             .onAppear {
                 if let adjustedSymbol = symbol.components(separatedBy: ":").last {
-                    apiManager.getFinancialData(symbol: adjustedSymbol) { success in
+                    financialApiManager.getFinancialData(symbol: adjustedSymbol) { success in
                         DispatchQueue.main.async {
                             isLoading = false
                         }
@@ -54,11 +55,17 @@ struct CryptoDetailView: View {
             .navigationTitle(symbol)
             
             Section {
-                
+                if !historicalApiManager.allData.isEmpty {
+                    CryptoChartView(cryptoHistoricalData: historicalApiManager.allData)
+                        .frame(height: 300)
+                } else {
+                    Text("No historical data available")
+                }
             }
         }
     }
 }
+
 
 #Preview {
     CryptoDetailView(symbol: "BTCUSD")
