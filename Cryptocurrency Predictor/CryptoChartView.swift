@@ -24,8 +24,8 @@ struct CryptoChartView: View {
             }
         }
         .chartXAxis {
-            AxisMarks(values: .stride(by: .day, count: 5)) { value in
-                AxisValueLabel(format: .dateTime.day().month())
+            AxisMarks(values: .stride(by: .year, count: 1)) { value in
+                AxisValueLabel(format: .dateTime.year())
             }
         }
     }

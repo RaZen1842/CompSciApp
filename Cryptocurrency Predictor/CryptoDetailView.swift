@@ -56,7 +56,6 @@ struct CryptoDetailView: View {
             .navigationTitle(symbol)
             
             Section {
-                Text("All time price")
                 if  isHistoricalDataLoading {
                     Text("Loading Chart...")
                 } else if !historicalApiManager.allData.isEmpty {
