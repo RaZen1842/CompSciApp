@@ -13,6 +13,7 @@ struct CryptoDetailView: View {
     @ObservedObject var historicalApiManager = HistoricalFinancialDataAPI.shared
     
     @State private var isLoading = true
+    @State private var isHistoricalDataLoading = true
     
     var body: some View {
         VStack {
@@ -55,11 +56,23 @@ struct CryptoDetailView: View {
             .navigationTitle(symbol)
             
             Section {
-                if !historicalApiManager.allData.isEmpty {
+                Text("All time price")
+                if  isHistoricalDataLoading {
+                    Text("Loading Chart...")
+                } else if !historicalApiManager.allData.isEmpty {
                     CryptoChartView(cryptoHistoricalData: historicalApiManager.allData)
                         .frame(height: 300)
                 } else {
                     Text("No historical data available")
+                }
+            }
+            .onAppear {
+                if let adjustedSymbol = symbol.components(separatedBy: ":").last {
+                    historicalApiManager.getAllCryptoHistoricalData(symbol: adjustedSymbol) { success in
+                        DispatchQueue.main.async {
+                            isHistoricalDataLoading = false
+                        }
+                    }
                 }
             }
         }

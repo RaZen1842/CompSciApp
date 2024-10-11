@@ -18,11 +18,19 @@ class HistoricalFinancialDataAPI: ObservableObject {
     func getAllCryptoHistoricalData(symbol: String, completion: @escaping (Bool) -> Void) {
         let urlString = "\(baseURL)\(symbol)?apikey=\(apiToken)"
         
-        guard let url = URL(string: urlString) else { return }
+        guard let url = URL(string: urlString) else {
+            DispatchQueue.main.async {
+                completion(false)
+            }
+            return
+        }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    completion(false)
+                }
                 return
             }
             
@@ -34,10 +42,14 @@ class HistoricalFinancialDataAPI: ObservableObject {
             do {
                 let result = try JSONDecoder().decode(AllCryptoHistoricalData.self, from: data)
                 DispatchQueue.main.async {
-                    self.allData = result.data
+                    self.allData = result.historical
+                    completion(true)
                 }
             } catch {
                 print("Error decoding JSON: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    completion(false)
+                }
             }
         }.resume()
     }

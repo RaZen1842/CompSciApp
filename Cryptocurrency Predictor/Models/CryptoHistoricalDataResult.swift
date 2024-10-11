@@ -8,7 +8,7 @@
 import Foundation
 
 struct AllCryptoHistoricalData: Codable {
-    let data: [CryptoHistoricalData]
+    let historical: [CryptoHistoricalData]
 }
 
 struct CryptoHistoricalData: Codable, Identifiable {
