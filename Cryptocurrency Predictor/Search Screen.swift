@@ -19,7 +19,7 @@ struct Search_Screen: View {
                     .font(.title)
                     .bold()
             }
-            .padding()
+            
             VStack {
                 Form {
                     Section {

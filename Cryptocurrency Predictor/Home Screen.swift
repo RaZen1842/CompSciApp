@@ -10,10 +10,26 @@ import SwiftUI
 struct Home_Screen: View {
     
     var body: some View {
-        VStack {
-            Text("Home Screen")
-                
-            
+        NavigationStack {
+            VStack {
+                Text("Home")
+                    .font(.title)
+                    .bold()
+            }
+            VStack {
+                Form {
+                    Section {
+                        Text("Trending Currencies 📈")
+                            .multilineTextAlignment(.center)
+                            .frame(width: 300)
+                            .bold()
+                    }
+                    
+                    List {
+                        
+                    }
+                }
+            }
         }
     }
 }
