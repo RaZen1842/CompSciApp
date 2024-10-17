@@ -32,9 +32,7 @@ struct CryptoChartView: View {
 }
 
 #Preview {
-    
-    let dummyData: [CryptoHistoricalData] = [
+    CryptoChartView(cryptoHistoricalData: [
         CryptoHistoricalData(date: "2024-10-09", change: 0.58, changePercent: 5.4, close: 80000, label: "")
-    ]
-    CryptoChartView(cryptoHistoricalData: dummyData)
+    ])
 }
