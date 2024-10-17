@@ -28,6 +28,16 @@ struct CryptoChartView: View {
                 AxisValueLabel(format: .dateTime.year())
             }
         }
+        .chartYAxis {
+            AxisMarks(values: .automatic) { value in
+                AxisGridLine()
+                AxisValueLabel {
+                    if let price = value.as(Double.self) {
+                        Text("$\(price, format: .number)")
+                    }
+                }
+            }
+        }
     }
 }
 
