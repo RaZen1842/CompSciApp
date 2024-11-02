@@ -24,10 +24,7 @@ struct Home_Screen: View {
                             .frame(width: 300)
                             .bold()
                     }
-                    
-                    List {
-                        
-                    }
+
                 }
             }
         }

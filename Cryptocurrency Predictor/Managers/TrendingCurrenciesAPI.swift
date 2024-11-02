@@ -6,7 +6,3 @@
 //
 
 import Foundation
-
-class TrendingCurrenciesAPI: ObservableObject {
-    static let shared = TrendingCurrenciesAPI()
-}

@@ -15,6 +15,5 @@ struct Crypto: Codable, Identifiable {
     var id: UUID { UUID() }
     let name: String
     let symbol: String
-    let country: String
     var type: String
 }
