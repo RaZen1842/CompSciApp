@@ -20,9 +20,11 @@ struct CryptoChartView: View {
                         y: .value("Price", dataPoint.close)
                     )
                     .foregroundStyle(.blue)
+                    .accessibilityIdentifier("DataPoint-\(dataPoint.id)")
                 }
             }
         }
+        .accessibilityIdentifier("CryptoChart")
         .chartXAxis {
             AxisMarks(values: .stride(by: .year, count: 1)) { value in
                 AxisValueLabel(format: .dateTime.year())

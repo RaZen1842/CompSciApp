@@ -9,5 +9,5 @@ import XCTest
 
 final class Cryptocurrency_PredictorUITests: XCTestCase {
     
-    
+
 }

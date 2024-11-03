@@ -6,21 +6,26 @@
 //
 
 import XCTest
+import Foundation
 @testable import Cryptocurrency_Predictor
 
 final class Cryptocurrency_PredictorTests: XCTestCase {
         
     var api: MarketauxAPI!
     var financialApi: FinancialDataAPI!
-        
+    var historicalApi: HistoricalFinancialDataAPI!
+    
+    
     override func setUpWithError() throws {
         api = MarketauxAPI()
         financialApi = FinancialDataAPI()
+        historicalApi = HistoricalFinancialDataAPI()
     }
         
     override func tearDownWithError() throws {
         api = nil
         financialApi = nil
+        historicalApi = nil
     }
         
     func testFetchCryptos() throws {
@@ -52,6 +57,28 @@ final class Cryptocurrency_PredictorTests: XCTestCase {
                 expectation.fulfill()
             }
         }
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    //Historical Data API tests
+    
+    func testFetchHistoricalDataForCryptos() throws {
+        let expectation = self.expectation(description: "Fetching historical financial data for BTCUSD from API")
+        
+        historicalApi.getAllCryptoHistoricalData(symbol: "BTCUSD") { success in
+            DispatchQueue.main.async {
+                XCTAssertTrue(success, "API call should be successful")
+                XCTAssertNotNil(self.historicalApi.allData, "Historical Data shouldn't return nil")
+                XCTAssertFalse(self.historicalApi.allData.isEmpty, "Historical Data should have values")
+                
+                if let firstEntry = self.historicalApi.allData.first {
+                    XCTAssertEqual(firstEntry.date, "2024-11-03")
+                }
+                
+                expectation.fulfill()
+            }
+        }
+        
         waitForExpectations(timeout: 5, handler: nil)
     }
 }
