@@ -42,14 +42,6 @@ class DiscoverCurrenciesAPI: ObservableObject {
                 return
             }
             
-            //Printing JSON - DELETE
-            
-            if let jsonString = String(data: data, encoding: .utf8) {
-                    print("Raw JSON response: \(jsonString)")
-            }
-            
-            //DELETE
-            
             do {
                 let result = try JSONDecoder().decode([DiscoveredCrypto].self, from: data)
                 DispatchQueue.main.async {

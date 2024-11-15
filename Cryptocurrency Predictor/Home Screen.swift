@@ -19,6 +19,11 @@ struct Home_Screen: View {
                     .font(.title)
                     .bold()
             }
+            .onAppear {
+                discoverCryptosAPI.getTop5TrendingCryptos { success in
+                    isLoading = !success
+                }
+            }
             VStack {
                 Form {
                     Section {
@@ -38,11 +43,7 @@ struct Home_Screen: View {
                             }
                         }
                     }
-                    .onAppear {
-                        discoverCryptosAPI.getTop5TrendingCryptos { success in
-                            isLoading = !success
-                        }
-                    }
+
                 }
             }
         }
