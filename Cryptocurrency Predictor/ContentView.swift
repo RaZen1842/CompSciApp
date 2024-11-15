@@ -10,8 +10,10 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var showAlert = false
+    @State private var disclaimerAccepted = false
     
     var body: some View {
+        ZStack {
             TabView {
                 Home_Screen()
                     .tabItem {
@@ -30,7 +32,14 @@ struct ContentView: View {
                         Label("News", systemImage: "newspaper")
                     }
             }
-        
+            .blur(radius: disclaimerAccepted ? 0 : 10)
+            
+            if !disclaimerAccepted {
+                Color.black.opacity(0.4)
+                    .ignoresSafeArea(.all)
+            }
+        }
+            
         .onAppear {
             self.showAlert = true
         }
@@ -38,7 +47,9 @@ struct ContentView: View {
             Alert(
                 title: Text("Disclaimer"),
                 message: Text("This app is for informational purposes only. Do not use it to make financial decisions. Creators and developers of this app are not liable for any financial losses incurred."),
-                dismissButton: .default(Text("I Understand"))
+                dismissButton: .default(Text("I Understand"), action: {
+                    disclaimerAccepted = true
+                })
             )
         }
     }
