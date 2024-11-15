@@ -34,6 +34,12 @@ struct Home_Screen: View {
                     }
                     
                     Section {
+                        Text("Discover new cryptocurrencies every day!")
+                            .multilineTextAlignment(.center)
+                            .frame(width: 300)
+                    }
+                    
+                    Section {
                         List(discoverCryptosAPI.discoveredCryptos) { crypto in
                             NavigationLink(destination: CryptoDetailView(symbol: crypto.symbol)) {
                                 VStack {
