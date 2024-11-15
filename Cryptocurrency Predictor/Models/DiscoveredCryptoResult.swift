@@ -12,10 +12,4 @@ struct DiscoveredCrypto: Codable, Identifiable {
     let symbol: String
     let name: String
     let currency: String
-    
-    enum CodingKeys: String, CodingKey {
-        case symbol
-        case name
-        case currency
-    }
 }
