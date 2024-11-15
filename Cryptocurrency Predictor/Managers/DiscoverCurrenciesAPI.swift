@@ -6,14 +6,13 @@
 //
 
 import Foundation
-import Combine
 
-class TrendingCurrenciesAPI: ObservableObject {
-    static let shared = TrendingCurrenciesAPI()
+class DiscoverCurrenciesAPI: ObservableObject {
+    static let shared = DiscoverCurrenciesAPI()
     
-    @Published var trendingCryptos: [TrendingCrypto] = []
+    @Published var discoveredCryptos: [DiscoveredCrypto] = []
     
-    private let baseURL: String = "https://financialmodelingprep.com/api/v3/quotes/crypto"
+    private let baseURL: String = "https://financialmodelingprep.com/api/v3/symbol/available-cryptocurrencies"
     private let apiKey: String = "UxsKn3yimlJ98bFs00nVDZx7WyVzQpGE"
     
     func getTop5TrendingCryptos(completion: @escaping (Bool) -> Void) {
@@ -25,9 +24,8 @@ class TrendingCurrenciesAPI: ObservableObject {
             }
             return
         }
-        
-        //remember you may have to add the [weak self] or smt below
-        URLSession.shared.dataTask(with: url) { data, response, error in
+      
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
                 DispatchQueue.main.async {
@@ -44,14 +42,19 @@ class TrendingCurrenciesAPI: ObservableObject {
                 return
             }
             
+            //Printing JSON - DELETE
+            
+            if let jsonString = String(data: data, encoding: .utf8) {
+                    print("Raw JSON response: \(jsonString)")
+            }
+            
+            //DELETE
+            
             do {
-                let result = try JSONDecoder().decode(AllTrendingCryptos.self, from: data)
+                let result = try JSONDecoder().decode([DiscoveredCrypto].self, from: data)
                 DispatchQueue.main.async {
-                    //may have to add a '?' after self
-                    self.trendingCryptos = result.cryptos
-                        .sorted { $0.changePercent > $1.changePercent }
-                        .prefix(5)
-                        .map { $0 }
+                    let usdCryptos = result.filter { $0.currency == "USD" }
+                    self?.discoveredCryptos = Array(usdCryptos.shuffled().prefix(5))
                     completion(true)
                 }
             } catch {

@@ -7,14 +7,15 @@
 
 import Foundation
 
-struct AllTrendingCryptos: Codable {
-    let cryptos: [TrendingCrypto]
-}
-
-struct TrendingCrypto: Codable, Identifiable {
+struct DiscoveredCrypto: Codable, Identifiable {
     var id: UUID { UUID() }
     let symbol: String
     let name: String
-    let price: Double
-    let changePercent: Double
+    let currency: String
+    
+    enum CodingKeys: String, CodingKey {
+        case symbol
+        case name
+        case currency
+    }
 }

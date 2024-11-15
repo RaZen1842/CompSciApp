@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		272EC59B2CD67C0D008D0334 /* TrendingCryptoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EC59A2CD67C0D008D0334 /* TrendingCryptoResult.swift */; };
+		272EC59B2CD67C0D008D0334 /* DiscoveredCryptoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EC59A2CD67C0D008D0334 /* DiscoveredCryptoResult.swift */; };
 		276DB3BD2CAC5ACF005243A4 /* CryptoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276DB3BC2CAC5ACF005243A4 /* CryptoDetailView.swift */; };
 		8588618E2CA550D1009FF132 /* FinancialDataAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8588618D2CA550D1009FF132 /* FinancialDataAPIManager.swift */; };
 		858861902CA55105009FF132 /* FinancialDataAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8588618F2CA55105009FF132 /* FinancialDataAPIResult.swift */; };
@@ -22,7 +22,7 @@
 		8598304D2C8B4343006E4B26 /* Search Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8598304C2C8B4343006E4B26 /* Search Screen.swift */; };
 		8598304F2C8B4350006E4B26 /* Favourites Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8598304E2C8B4350006E4B26 /* Favourites Screen.swift */; };
 		859830512C8B435A006E4B26 /* News Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859830502C8B435A006E4B26 /* News Screen.swift */; };
-		85AD0C442CBFD77100CD5BBA /* TrendingCurrenciesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD0C432CBFD77100CD5BBA /* TrendingCurrenciesAPI.swift */; };
+		85AD0C442CBFD77100CD5BBA /* DiscoverCurrenciesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD0C432CBFD77100CD5BBA /* DiscoverCurrenciesAPI.swift */; };
 		85BDED1E2C92DD46000C9B44 /* CryptoPriceAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BDED1D2C92DD46000C9B44 /* CryptoPriceAPIResult.swift */; };
 		85BDED212C92DD92000C9B44 /* MarketauxAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BDED202C92DD92000C9B44 /* MarketauxAPIManager.swift */; };
 		85C39C5F2CB7C27C00420B4F /* CryptoChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C39C5E2CB7C27C00420B4F /* CryptoChartView.swift */; };
@@ -48,7 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		272EC59A2CD67C0D008D0334 /* TrendingCryptoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCryptoResult.swift; sourceTree = "<group>"; };
+		272EC59A2CD67C0D008D0334 /* DiscoveredCryptoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveredCryptoResult.swift; sourceTree = "<group>"; };
 		276DB3BC2CAC5ACF005243A4 /* CryptoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDetailView.swift; sourceTree = "<group>"; };
 		8588618D2CA550D1009FF132 /* FinancialDataAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialDataAPIManager.swift; sourceTree = "<group>"; };
 		8588618F2CA55105009FF132 /* FinancialDataAPIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialDataAPIResult.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		8598304C2C8B4343006E4B26 /* Search Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search Screen.swift"; sourceTree = "<group>"; };
 		8598304E2C8B4350006E4B26 /* Favourites Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favourites Screen.swift"; sourceTree = "<group>"; };
 		859830502C8B435A006E4B26 /* News Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News Screen.swift"; sourceTree = "<group>"; };
-		85AD0C432CBFD77100CD5BBA /* TrendingCurrenciesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCurrenciesAPI.swift; sourceTree = "<group>"; };
+		85AD0C432CBFD77100CD5BBA /* DiscoverCurrenciesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCurrenciesAPI.swift; sourceTree = "<group>"; };
 		85BDED1D2C92DD46000C9B44 /* CryptoPriceAPIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPriceAPIResult.swift; sourceTree = "<group>"; };
 		85BDED202C92DD92000C9B44 /* MarketauxAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketauxAPIManager.swift; sourceTree = "<group>"; };
 		85C39C5E2CB7C27C00420B4F /* CryptoChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoChartView.swift; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 				85BDED1D2C92DD46000C9B44 /* CryptoPriceAPIResult.swift */,
 				8588618F2CA55105009FF132 /* FinancialDataAPIResult.swift */,
 				85F1AC2F2CB033B900470BDB /* CryptoHistoricalDataResult.swift */,
-				272EC59A2CD67C0D008D0334 /* TrendingCryptoResult.swift */,
+				272EC59A2CD67C0D008D0334 /* DiscoveredCryptoResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				85BDED202C92DD92000C9B44 /* MarketauxAPIManager.swift */,
-				85AD0C432CBFD77100CD5BBA /* TrendingCurrenciesAPI.swift */,
+				85AD0C432CBFD77100CD5BBA /* DiscoverCurrenciesAPI.swift */,
 				8588618D2CA550D1009FF132 /* FinancialDataAPIManager.swift */,
 				85F1AC312CB0357E00470BDB /* HistoricalFinancialDataAPI.swift */,
 			);
@@ -315,8 +315,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				272EC59B2CD67C0D008D0334 /* TrendingCryptoResult.swift in Sources */,
-				85AD0C442CBFD77100CD5BBA /* TrendingCurrenciesAPI.swift in Sources */,
+				272EC59B2CD67C0D008D0334 /* DiscoveredCryptoResult.swift in Sources */,
+				85AD0C442CBFD77100CD5BBA /* DiscoverCurrenciesAPI.swift in Sources */,
 				8598304D2C8B4343006E4B26 /* Search Screen.swift in Sources */,
 				8598304F2C8B4350006E4B26 /* Favourites Screen.swift in Sources */,
 				85BDED1E2C92DD46000C9B44 /* CryptoPriceAPIResult.swift in Sources */,
