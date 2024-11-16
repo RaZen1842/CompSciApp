@@ -42,9 +42,10 @@ struct Home_Screen: View {
                     Section {
                         List(discoverCryptosAPI.discoveredCryptos) { crypto in
                             NavigationLink(destination: CryptoDetailView(symbol: crypto.symbol)) {
-                                VStack {
+                                VStack(alignment: .leading) {
                                     Text(crypto.name)
                                         .bold()
+                                    Text(crypto.symbol)
                                 }
                             }
                         }

@@ -5,6 +5,7 @@
 //  Created by Veturi, Shreyas (HJRM) on 12/09/2024.
 //
 
+//Might have to delete once I finish my search API redo
 import Foundation
 
 struct CryptoInfo: Codable {
@@ -17,3 +18,5 @@ struct Crypto: Codable, Identifiable {
     let symbol: String
     var type: String
 }
+
+//Might delete once I finish search API redo

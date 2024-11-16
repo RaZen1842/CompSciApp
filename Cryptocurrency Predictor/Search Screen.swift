@@ -10,7 +10,9 @@ import SwiftUI
 struct Search_Screen: View {
     
     @State private var search: String = ""
-    @ObservedObject private var apiManager = MarketauxAPI.shared
+    @State private var isLoading = true
+    
+    @ObservedObject private var apiManager = SearchCurrenciesAPI.shared
     
     var body: some View {
         NavigationStack{
@@ -18,6 +20,11 @@ struct Search_Screen: View {
                 Text("Search Crypto")
                     .font(.title)
                     .bold()
+            }
+            .onAppear {
+                apiManager.getAllCryptos { success in
+                    isLoading = !success
+                }
             }
             
             VStack {
@@ -28,20 +35,20 @@ struct Search_Screen: View {
                                 .foregroundColor(.gray)
                             
                             TextField("Search Currency", text: $search)
-                            
-                            Button(action: {
-                                apiManager.getCrypto(query: search)
-                            }) {
-                                Text("Search")
-                            }
+                                .onChange(of: search) { oldValue, newValue in
+                                    if newValue != "" {
+                                        apiManager.searchCryptos(query: newValue)
+                                    }
+                                }
                         }
                     }
                     
-                    List(apiManager.cryptos) { crypto in
+                    List(apiManager.filteredCryptos) { crypto in
                         NavigationLink(destination: CryptoDetailView(symbol: crypto.symbol)) {
-                            VStack {
+                            VStack(alignment: .leading) {
                                 Text(crypto.name)
                                     .bold()
+                                Text(crypto.symbol)
                             }
                         }
                     }
