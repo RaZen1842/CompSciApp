@@ -52,6 +52,7 @@ struct ContentView: View {
                 })
             )
         }
+        //Add haptic feedback so once user clicks the alert 'I understand'
     }
 }
 
