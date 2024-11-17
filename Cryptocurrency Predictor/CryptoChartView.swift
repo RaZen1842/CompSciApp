@@ -12,6 +12,7 @@ struct CryptoChartView: View {
     let cryptoHistoricalData: [CryptoHistoricalData]
     
     var body: some View {
+        //Need to add a selction i.e All time, year, month, week, day
         Chart {
             ForEach(cryptoHistoricalData, id: \.id) { dataPoint in
                 if let date = dataPoint.newDate {
