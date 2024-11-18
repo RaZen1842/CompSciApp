@@ -27,7 +27,7 @@ struct News_Screen: View {
                             .lineLimit(2)
                         Text(article.description)
                             .font(.subheadline)
-                            .lineLimit(3)
+                            .lineLimit(10)
                     }
                 }
             }
