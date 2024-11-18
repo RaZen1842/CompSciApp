@@ -46,7 +46,7 @@ class NewsAPI: ObservableObject {
                 let result = try JSONDecoder().decode(NewsAPIResult.self, from: data)
                 DispatchQueue.main.async {
                     self.articles = result.data
-                    completion(false)
+                    completion(true)
                 }
             } catch {
                 print("Error decoding JSON: \(error.localizedDescription)")
