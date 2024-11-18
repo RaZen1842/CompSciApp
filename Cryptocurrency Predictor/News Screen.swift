@@ -30,15 +30,15 @@ struct News_Screen: View {
                             .lineLimit(3)
                     }
                 }
-                .onAppear {
-                    isLoading = true
-                    isThereError = false
-                    newsApi.getNews { success in
-                        isLoading = false
-                        if !success {
-                            isThereError = true
-                        }
-                    }
+            }
+        }
+        .onAppear {
+            isLoading = true
+            isThereError = false
+            newsApi.getNews { success in
+                isLoading = false
+                if !success {
+                    isThereError = true
                 }
             }
         }
