@@ -42,41 +42,43 @@ struct News_Screen: View {
                             
                             List(newsApi.articles) { article in
                                 NavigationLink(destination: NewsDetailView(article: article)) {
-                                    HStack(alignment: .top, spacing: 12) {
+                                    VStack(alignment: .leading, spacing: 8) {
                                         
                                         AsyncImage(url: URL(string: article.image_url)) { phase in
                                             
                                             switch phase {
                                             case .empty:
                                                 ProgressView()
-                                                    .frame(width: 80, height: 80)
+                                                    .frame(maxWidth: .infinity, minHeight: 200)
+                                                    .cornerRadius(8)
                                             case .success(let image):
                                                 image
                                                     .resizable()
                                                     .scaledToFit()
-                                                    .frame(width: 80, height: 80)
-                                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                                    .frame(maxWidth: .infinity, minHeight: 200)
+                                                    .clipped()
+                                                    .cornerRadius(8)
                                             case .failure:
                                                 Image(systemName: "photo")
                                                     .resizable()
                                                     .scaledToFit()
-                                                    .frame(width: 80, height: 80)
+                                                    .frame(maxWidth: .infinity, minHeight: 200)
                                                     .foregroundColor(.gray)
+                                                    .cornerRadius(8)
                                             @unknown default:
                                                 EmptyView()
                                             }
                                         }
                                         
-                                        VStack(alignment: .leading, spacing: 6) {
-                                            Text(article.title)
-                                                .font(.headline)
-                                            Text(article.source)
-                                                .font(.caption)
-                                            Text(article.description)
-                                                .font(.subheadline)
-                                        }
+                                        Text(article.title)
+                                            .font(.headline)
+                                        Text(article.source)
+                                            .font(.caption)
+                                        Text(article.description)
+                                            .font(.subheadline)
                                     }
                                 }
+                                .padding(.vertical, 8)
                             }
                         }
                     }
