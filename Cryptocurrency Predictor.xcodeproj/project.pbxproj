@@ -13,6 +13,7 @@
 		276DB3BD2CAC5ACF005243A4 /* CryptoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276DB3BC2CAC5ACF005243A4 /* CryptoDetailView.swift */; };
 		2788E93A2CE901730035F447 /* SearchCurrenciesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2788E9392CE901730035F447 /* SearchCurrenciesAPI.swift */; };
 		2788E93C2CE9021A0035F447 /* SearchAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2788E93B2CE9021A0035F447 /* SearchAPIResult.swift */; };
+		279A8EF52CECF8F3009B06CE /* NewsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279A8EF42CECF8F3009B06CE /* NewsDetailView.swift */; };
 		8588618E2CA550D1009FF132 /* FinancialDataAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8588618D2CA550D1009FF132 /* FinancialDataAPIManager.swift */; };
 		858861902CA55105009FF132 /* FinancialDataAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8588618F2CA55105009FF132 /* FinancialDataAPIResult.swift */; };
 		8598301F2C8B3B20006E4B26 /* Cryptocurrency_PredictorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8598301E2C8B3B20006E4B26 /* Cryptocurrency_PredictorApp.swift */; };
@@ -56,6 +57,7 @@
 		276DB3BC2CAC5ACF005243A4 /* CryptoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDetailView.swift; sourceTree = "<group>"; };
 		2788E9392CE901730035F447 /* SearchCurrenciesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCurrenciesAPI.swift; sourceTree = "<group>"; };
 		2788E93B2CE9021A0035F447 /* SearchAPIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPIResult.swift; sourceTree = "<group>"; };
+		279A8EF42CECF8F3009B06CE /* NewsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailView.swift; sourceTree = "<group>"; };
 		8588618D2CA550D1009FF132 /* FinancialDataAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialDataAPIManager.swift; sourceTree = "<group>"; };
 		8588618F2CA55105009FF132 /* FinancialDataAPIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialDataAPIResult.swift; sourceTree = "<group>"; };
 		8598301B2C8B3B20006E4B26 /* Cryptocurrency Predictor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cryptocurrency Predictor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +140,7 @@
 				859830502C8B435A006E4B26 /* News Screen.swift */,
 				276DB3BC2CAC5ACF005243A4 /* CryptoDetailView.swift */,
 				85C39C5E2CB7C27C00420B4F /* CryptoChartView.swift */,
+				279A8EF42CECF8F3009B06CE /* NewsDetailView.swift */,
 			);
 			path = "Cryptocurrency Predictor";
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				2788E93C2CE9021A0035F447 /* SearchAPIResult.swift in Sources */,
 				8588618E2CA550D1009FF132 /* FinancialDataAPIManager.swift in Sources */,
 				2788E93A2CE901730035F447 /* SearchCurrenciesAPI.swift in Sources */,
+				279A8EF52CECF8F3009B06CE /* NewsDetailView.swift in Sources */,
 				85F1AC302CB033B900470BDB /* CryptoHistoricalDataResult.swift in Sources */,
 				8598304B2C8B430E006E4B26 /* Home Screen.swift in Sources */,
 			);

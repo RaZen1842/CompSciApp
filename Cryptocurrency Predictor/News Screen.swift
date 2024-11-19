@@ -22,24 +22,60 @@ struct News_Screen: View {
             }
             VStack {
                 Form {
+                    Text("Top Stories")
+                        .font(.headline)
+                        .bold()
+                        .multilineTextAlignment(.center)
+                        .frame(width: 300)
                     if isLoading {
                         Section {
                             ProgressView("Loading News")
+                                .frame(width: 300)
                         }
                     } else if isThereError {
                         Section {
                             Text("Error fetching news")
+                                .frame(width: 300)
                         }
                     } else {
                         Section {
+                            
                             List(newsApi.articles) { article in
-                                VStack(alignment: .leading) {
-                                    Text(article.title)
-                                        .font(.headline)
-                                        .lineLimit(2)
-                                    Text(article.description)
-                                        .font(.subheadline)
-                                        .lineLimit(10)
+                                NavigationLink(destination: NewsDetailView(article: article)) {
+                                    HStack(alignment: .top, spacing: 12) {
+                                        
+                                        AsyncImage(url: URL(string: article.image_url)) { phase in
+                                            
+                                            switch phase {
+                                            case .empty:
+                                                ProgressView()
+                                                    .frame(width: 80, height: 80)
+                                            case .success(let image):
+                                                image
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 80, height: 80)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                            case .failure:
+                                                Image(systemName: "photo")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 80, height: 80)
+                                                    .foregroundColor(.gray)
+                                            @unknown default:
+                                                EmptyView()
+                                            }
+                                        }
+                                        
+                                        VStack(alignment: .leading, spacing: 6) {
+                                            Text(article.title)
+                                                .font(.headline)
+                                            Text(article.source)
+                                                .font(.caption)
+                                            Text(article.description)
+                                                .font(.subheadline)
+                                        }
+                                    }
                                 }
                             }
                         }
