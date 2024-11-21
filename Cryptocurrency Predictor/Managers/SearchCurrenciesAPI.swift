@@ -66,25 +66,26 @@ class SearchCurrenciesAPI: ObservableObject {
         }
         
         let lowercasedQuery = query.lowercased()
-        
-        filteredCryptos = allCryptos.filter { crypto in
-            crypto.name.lowercased().contains(lowercasedQuery) ||
-            crypto.symbol.lowercased().contains(lowercasedQuery)
+            
+        filteredCryptos = allCryptos
+            .filter { crypto in
+                let symbolMatch = crypto.symbol.lowercased().contains(lowercasedQuery)
+                let nameMatch = crypto.name.lowercased().contains(lowercasedQuery)
+                return symbolMatch || nameMatch
+            }
+            .sorted { crypto1, crypto2 in
+                let crypto1Symbol = crypto1.symbol.lowercased()
+                let crypto2Symbol = crypto2.symbol.lowercased()
+            
+                // Prioritize exact match of the symbol with the query
+                if crypto1Symbol == lowercasedQuery && crypto2Symbol != lowercasedQuery {
+                    return true
+                } else if crypto2Symbol == lowercasedQuery && crypto1Symbol != lowercasedQuery {
+                    return false
+                }
+                    
+                // Otherwise, sort by proximity of the symbol to the query
+                return crypto1Symbol.hasPrefix(lowercasedQuery) && !crypto2Symbol.hasPrefix(lowercasedQuery)
+            }
         }
-        .sorted { crypto1, crypto2 in
-            let name1 = crypto1.name.lowercased()
-            let name2 = crypto2.name.lowercased()
-            
-            let symbol1 = crypto1.symbol.lowercased()
-            let symbol2 = crypto2.symbol.lowercased()
-            
-            let nameMatch1 = name1.contains(lowercasedQuery) ? name1.range(of: lowercasedQuery)?.lowerBound.utf16Offset(in: name1) ?? Int.max : Int.max
-            let nameMatch2 = name2.contains(lowercasedQuery) ? name2.range(of: lowercasedQuery)?.lowerBound.utf16Offset(in: name2) ?? Int.max : Int.max
-            
-            let symbolMatch1 = symbol1.contains(lowercasedQuery) ? symbol1.range(of: lowercasedQuery)?.lowerBound.utf16Offset(in: symbol1) ?? Int.max : Int.max
-            let symbolMatch2 = symbol2.contains(lowercasedQuery) ? symbol2.range(of: lowercasedQuery)?.lowerBound.utf16Offset(in: symbol2) ?? Int.max : Int.max
-            
-            return min(nameMatch1, symbolMatch1) < min(nameMatch2, symbolMatch2)
-        }
-    }
 }
