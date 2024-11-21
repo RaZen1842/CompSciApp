@@ -76,15 +76,13 @@ class SearchCurrenciesAPI: ObservableObject {
             .sorted { crypto1, crypto2 in
                 let crypto1Symbol = crypto1.symbol.lowercased()
                 let crypto2Symbol = crypto2.symbol.lowercased()
-            
-                // Prioritize exact match of the symbol with the query
+          
                 if crypto1Symbol == lowercasedQuery && crypto2Symbol != lowercasedQuery {
                     return true
                 } else if crypto2Symbol == lowercasedQuery && crypto1Symbol != lowercasedQuery {
                     return false
                 }
-                    
-                // Otherwise, sort by proximity of the symbol to the query
+               
                 return crypto1Symbol.hasPrefix(lowercasedQuery) && !crypto2Symbol.hasPrefix(lowercasedQuery)
             }
         }
