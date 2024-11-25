@@ -15,6 +15,7 @@ final class Cryptocurrency_PredictorTests: XCTestCase {
     var financialApi: FinancialDataAPI!
     var historicalApi: HistoricalFinancialDataAPI!
     var discoverCurrenciesApi: DiscoverCurrenciesAPI!
+    var newsApi: NewsAPI!
     
     
     override func setUpWithError() throws {
@@ -22,6 +23,7 @@ final class Cryptocurrency_PredictorTests: XCTestCase {
         financialApi = FinancialDataAPI()
         historicalApi = HistoricalFinancialDataAPI()
         discoverCurrenciesApi = DiscoverCurrenciesAPI()
+        newsApi = NewsAPI()
     }
         
     override func tearDownWithError() throws {
@@ -29,6 +31,7 @@ final class Cryptocurrency_PredictorTests: XCTestCase {
         financialApi = nil
         historicalApi = nil
         discoverCurrenciesApi = nil
+        newsApi = nil
     }
         
     func testSearchCryptos() throws {
@@ -108,6 +111,24 @@ final class Cryptocurrency_PredictorTests: XCTestCase {
             }
         }
         
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    //News API test cases
+    
+    func testNewsApi() throws {
+        let expectation = self.expectation(description: "Fetching news from API")
+        
+        newsApi.getNews { success in
+            DispatchQueue.main.async {
+                XCTAssertTrue(success, "API call should be successful")
+                XCTAssertNotNil(self.newsApi.articles, "News shouldn't return nil")
+                XCTAssertFalse(self.newsApi.articles.isEmpty, "News should have values")
+                XCTAssertEqual(self.newsApi.articles.count, 3, "News should have 3 articles")
+                
+                expectation.fulfill()
+            }
+        }
         waitForExpectations(timeout: 5, handler: nil)
     }
 }
