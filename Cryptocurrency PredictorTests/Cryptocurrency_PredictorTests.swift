@@ -11,39 +11,45 @@ import Foundation
 
 final class Cryptocurrency_PredictorTests: XCTestCase {
         
-    var api: SearchCurrenciesAPI!
+    var searchApi: SearchCurrenciesAPI!
     var financialApi: FinancialDataAPI!
     var historicalApi: HistoricalFinancialDataAPI!
+    var discoverCurrenciesApi: DiscoverCurrenciesAPI!
     
     
     override func setUpWithError() throws {
-        api = SearchCurrenciesAPI()
+        searchApi = SearchCurrenciesAPI()
         financialApi = FinancialDataAPI()
         historicalApi = HistoricalFinancialDataAPI()
+        discoverCurrenciesApi = DiscoverCurrenciesAPI()
     }
         
     override func tearDownWithError() throws {
-        api = nil
+        searchApi = nil
         financialApi = nil
         historicalApi = nil
+        discoverCurrenciesApi = nil
     }
         
-    func testFetchCryptos() throws {
-        let expectation = self.expectation(description: "Fetching crypto (Bitcoin) from API")
-            
-        api.searchCryptos(query: "bitcoin")
-            
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertFalse(self.api.allCryptos.isEmpty, "The cryptos array should not be empty after fetching data.")
-            
-            /*
-            let firstCrypto = self.api.filteredCryptos.first
-             
-            XCTAssertEqual(firstCrypto?., "cryptocurrency", "The first item should be a cryptocurrency.")
-            XCTAssertEqual(firstCrypto?.name, "Bitcoin")
-            */
-            expectation.fulfill()
+    func testSearchCryptos() throws {
+        let expectation = self.expectation(description: "Fetching crypto (Bitcoin) from API using known symbol to return Bitcoin USD as the first element")
+        
+        searchApi.getAllCryptos { success in
+            XCTAssertTrue(success, "API call should be successful")
+            XCTAssertNotNil(self.searchApi.allCryptos, "Financial Data shouldn't return nil")
+            XCTAssertFalse(self.searchApi.allCryptos.isEmpty, "All Cryptos should not be empty")
         }
+        
+        /*
+        self.searchApi.searchCryptos(query: "BTCUSD")
+
+        let topResult = self.searchApi.filteredCryptos.first
+        XCTAssertNotNil(topResult, "Top result should not be nil")
+        XCTAssertEqual(topResult?.symbol, "BTCUSD", "The top result should be 'Bitcoin USD'")
+        */
+        
+        expectation.fulfill()
+       
         waitForExpectations(timeout: 5, handler: nil)
     }
     
@@ -78,6 +84,25 @@ final class Cryptocurrency_PredictorTests: XCTestCase {
                 if let firstEntry = self.historicalApi.allData.first {
                     XCTAssertEqual(firstEntry.date, "2024-11-03")
                 }
+                
+                expectation.fulfill()
+            }
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    //Discover currencies API test
+    
+    func testGetting5DiscoveredCryptos() throws {
+        let expectation = self.expectation(description: "Fetching 5 discovered cryptocurrencies from API")
+        
+        discoverCurrenciesApi.getTop5TrendingCryptos { success in
+            DispatchQueue.main.async {
+                XCTAssertTrue(success, "API call should be successful")
+                XCTAssertNotNil(self.discoverCurrenciesApi.discoveredCryptos, "Discovered cryptocurrencies shouldn't return nil")
+                XCTAssertFalse(self.discoverCurrenciesApi.discoveredCryptos.isEmpty, "Discovered cryptocurrencies should have values")
+                XCTAssertEqual(self.discoverCurrenciesApi.discoveredCryptos.count, 5, "Discovered cryptocurrencies should have 5 values")
                 
                 expectation.fulfill()
             }
