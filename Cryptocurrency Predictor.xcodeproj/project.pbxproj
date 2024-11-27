@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2716AA492CF7416D009E0B89 /* FavouritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716AA482CF7416D009E0B89 /* FavouritesManager.swift */; };
 		272334032CEBEF2C00D010B5 /* NewsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272334022CEBEF2C00D010B5 /* NewsAPI.swift */; };
 		272334052CEBEF4800D010B5 /* NewsAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272334042CEBEF4800D010B5 /* NewsAPIResult.swift */; };
 		272EC59B2CD67C0D008D0334 /* DiscoveredCryptoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EC59A2CD67C0D008D0334 /* DiscoveredCryptoResult.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2716AA482CF7416D009E0B89 /* FavouritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesManager.swift; sourceTree = "<group>"; };
 		272334022CEBEF2C00D010B5 /* NewsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPI.swift; sourceTree = "<group>"; };
 		272334042CEBEF4800D010B5 /* NewsAPIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIResult.swift; sourceTree = "<group>"; };
 		272EC59A2CD67C0D008D0334 /* DiscoveredCryptoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveredCryptoResult.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				85F1AC312CB0357E00470BDB /* HistoricalFinancialDataAPI.swift */,
 				2788E9392CE901730035F447 /* SearchCurrenciesAPI.swift */,
 				272334022CEBEF2C00D010B5 /* NewsAPI.swift */,
+				2716AA482CF7416D009E0B89 /* FavouritesManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				272EC59B2CD67C0D008D0334 /* DiscoveredCryptoResult.swift in Sources */,
+				2716AA492CF7416D009E0B89 /* FavouritesManager.swift in Sources */,
 				85AD0C442CBFD77100CD5BBA /* DiscoverCurrenciesAPI.swift in Sources */,
 				8598304D2C8B4343006E4B26 /* Search Screen.swift in Sources */,
 				8598304F2C8B4350006E4B26 /* Favourites Screen.swift in Sources */,

@@ -46,7 +46,6 @@ struct NewsDetailView: View {
                     }
                     
                     Text(article.snippet)
-                        .font(.headline)
                     Link("Read more", destination: URL(string: article.url)!)
                     
                 }
