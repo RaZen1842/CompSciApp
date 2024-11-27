@@ -11,6 +11,7 @@ struct CryptoDetailView: View {
     let symbol: String
     @ObservedObject var financialApiManager = FinancialDataAPI.shared
     @ObservedObject var historicalApiManager = HistoricalFinancialDataAPI.shared
+    @ObservedObject var favouritesManager = FavouritesManager.shared
     
     @State private var isLoading = true
     @State private var isHistoricalDataLoading = true
@@ -74,6 +75,25 @@ struct CryptoDetailView: View {
                     }
                 }
             }
+            
+            //Favourites type shi
+            
+            Section {
+                Toggle(isOn: Binding(
+                    get: { favouritesManager.isFavourite(symbol) },
+                    set:{ isFavourite in
+                        if isFavourite {
+                            favouritesManager.addFavourite(symbol)
+                        } else {
+                            favouritesManager.removeFavourite(symbol)
+                        }
+                    }
+                )) {
+                    Text("Favourite")
+                }
+            }
+            
+            // end favs here
         }
     }
 }
