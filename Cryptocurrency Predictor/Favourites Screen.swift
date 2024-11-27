@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct Favourites_Screen: View {
+    @ObservedObject var favouritesManager = FavouritesManager.shared
+    
     var body: some View {
-        Text("Favourites Screen")
+        NavigationStack {
+            List {
+                ForEach(favouritesManager.favourites, id: \.self) { symbol in
+                    NavigationLink(destination: CryptoDetailView(symbol: symbol)) {
+                        Text(symbol)
+                    }
+                }
+            }
+            .navigationTitle("Favourites")
+        }
     }
 }
 
