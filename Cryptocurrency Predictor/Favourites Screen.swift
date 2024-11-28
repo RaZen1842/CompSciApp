@@ -22,11 +22,13 @@ struct Favourites_Screen: View {
                     List(favouritesManager.favourites, id: \.self) { symbol in
                         HStack {
                             if let crypto = favouritesManager.favouritesDetails[symbol] {
-                                VStack(alignment: .leading) {
-                                    Text(crypto.name)
-                                        .font(.headline)
-                                    Text(crypto.symbol)
-                                        .font(.subheadline)
+                                NavigationLink(destination: CryptoDetailView(symbol: symbol)) {
+                                    VStack(alignment: .leading) {
+                                        Text(crypto.name)
+                                            .font(.headline)
+                                        Text(crypto.symbol)
+                                            .font(.subheadline)
+                                    }
                                 }
                             } else {
                                 Text(symbol)

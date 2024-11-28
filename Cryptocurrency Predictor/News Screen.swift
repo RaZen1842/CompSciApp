@@ -16,11 +16,6 @@ struct News_Screen: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("News")
-                    .font(.title)
-                    .bold()
-            }
-            VStack {
                 Form {
                     Text("Top Stories")
                         .font(.headline)
@@ -84,6 +79,7 @@ struct News_Screen: View {
                     }
                 }
             }
+            .navigationTitle("News")
             .onAppear {
                 isLoading = true
                 isThereError = false

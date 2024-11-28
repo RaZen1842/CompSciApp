@@ -31,7 +31,7 @@ struct CryptoDetailView: View {
         
         Form {
             
-            Section {
+            Section(header: Text("Data")) {
                 if isLoading {
                     Text("Looking for \(symbol)")
                 } else if let crypto = financialApiManager.cryptoFinancialData {
@@ -54,9 +54,8 @@ struct CryptoDetailView: View {
                     }
                 }
             }
-            .navigationTitle(symbol)
             
-            Section {
+            Section(header: Text("Chart")) {
                 if  isHistoricalDataLoading {
                     Text("Loading Chart...")
                 } else if !historicalApiManager.allData.isEmpty {

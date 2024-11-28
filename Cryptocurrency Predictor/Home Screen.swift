@@ -15,16 +15,6 @@ struct Home_Screen: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("Home")
-                    .font(.title)
-                    .bold()
-            }
-            .onAppear {
-                discoverCryptosAPI.getTop5TrendingCryptos { success in
-                    isLoading = !success
-                }
-            }
-            VStack {
                 Form {
                     Section {
                         Text("💸 Discover Currencies 💸")
@@ -51,6 +41,12 @@ struct Home_Screen: View {
                         }
                     }
 
+                }
+            }
+            .navigationTitle("Home")
+            .onAppear {
+                discoverCryptosAPI.getTop5TrendingCryptos { success in
+                    isLoading = !success
                 }
             }
         }

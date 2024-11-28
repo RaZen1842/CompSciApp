@@ -15,18 +15,7 @@ struct Search_Screen: View {
     @ObservedObject private var apiManager = SearchCurrenciesAPI.shared
     
     var body: some View {
-        NavigationStack{
-            VStack {
-                Text("Search Crypto")
-                    .font(.title)
-                    .bold()
-            }
-            .onAppear {
-                apiManager.getAllCryptos { success in
-                    isLoading = !success
-                }
-            }
-            
+        NavigationStack {
             VStack {
                 Form {
                     Section {
@@ -52,6 +41,12 @@ struct Search_Screen: View {
                             }
                         }
                     }
+                }
+            }
+            .navigationTitle("Search Crypto")
+            .onAppear {
+                apiManager.getAllCryptos { success in
+                    isLoading = !success
                 }
             }
         }
