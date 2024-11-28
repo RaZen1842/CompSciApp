@@ -12,10 +12,26 @@ struct Favourites_Screen: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(favouritesManager.favourites, id: \.self) { symbol in
-                    NavigationLink(destination: CryptoDetailView(symbol: symbol)) {
-                        Text(symbol)
+            
+            Group {
+                if  favouritesManager.favourites.isEmpty {
+                    Text("No favourites yet")
+                        .font(.title2)
+                        .foregroundColor(.gray)
+                } else {
+                    List {
+                        ForEach(favouritesManager.favourites, id: \.self) { symbol in
+                            if let crypto = favouritesManager.favouritesDetials[symbol] {
+                                NavigationLink(destination: CryptoDetailView(symbol: symbol)) {
+                                    VStack(alignment: .leading) {
+                                        Text(crypto.name)
+                                            .font(.headline)
+                                        Text("\(crypto.symbol) (\(crypto.rank))")
+                                            .font(.subheadline)
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
