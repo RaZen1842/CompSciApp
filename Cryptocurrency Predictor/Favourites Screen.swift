@@ -31,11 +31,13 @@ struct Favourites_Screen: View {
                                     }
                                 }
                             } else {
-                                Text(symbol)
-                                    .font(.headline)
-                                Text("Details Loading...")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
+                                NavigationLink(destination: CryptoDetailView(symbol: symbol)) {
+                                    Text(symbol)
+                                        .font(.headline)
+                                    Text("Details Loading...")
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                }
                             }
                         }
                     }
