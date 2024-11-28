@@ -12,24 +12,28 @@ struct Favourites_Screen: View {
     
     var body: some View {
         NavigationStack {
-            
-            Group {
-                if  favouritesManager.favourites.isEmpty {
+            VStack {
+                if favouritesManager.favourites.isEmpty {
                     Text("No favourites yet")
                         .font(.title2)
                         .foregroundColor(.gray)
+                        .padding()
                 } else {
-                    List {
-                        ForEach(favouritesManager.favourites, id: \.self) { symbol in
-                            if let crypto = favouritesManager.favouritesDetials[symbol] {
-                                NavigationLink(destination: CryptoDetailView(symbol: symbol)) {
-                                    VStack(alignment: .leading) {
-                                        Text(crypto.name)
-                                            .font(.headline)
-                                        Text("\(crypto.symbol) (\(crypto.rank))")
-                                            .font(.subheadline)
-                                    }
+                    List(favouritesManager.favourites, id: \.self) { symbol in
+                        HStack {
+                            if let crypto = favouritesManager.favouritesDetails[symbol] {
+                                VStack(alignment: .leading) {
+                                    Text(crypto.name)
+                                        .font(.headline)
+                                    Text(crypto.symbol)
+                                        .font(.subheadline)
                                 }
+                            } else {
+                                Text(symbol)
+                                    .font(.headline)
+                                Text("Details Loading...")
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
                             }
                         }
                     }

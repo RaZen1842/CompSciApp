@@ -95,6 +95,11 @@ struct CryptoDetailView: View {
             
             // end favs here
         }
+        .alert("Maximum favourites reached", isPresented: $favouritesManager.showMaxFavouritesAlert) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("You can only have 10 favourites.")
+        }
     }
 }
 

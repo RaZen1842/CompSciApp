@@ -11,8 +11,10 @@ class FavouritesManager: ObservableObject {
     static let shared = FavouritesManager()
     private let favouritesKey = "favouriteCryptos"
     @Published var favourites: [String] = []
+    @Published var showMaxFavouritesAlert: Bool = false
+    @Published var favouritesDetails: [String: CryptoFinancialData] = [:]
     
-    @Published var favouritesDetials: [String: CryptoFinancialData] = [:]
+    private let maxFavourites = 10
     
     private init() {
         if let savedFavourites = UserDefaults.standard.array(forKey: favouritesKey) as? [String] {
@@ -22,6 +24,11 @@ class FavouritesManager: ObservableObject {
     }
     
     func addFavourite(_ symbol: String) {
+        guard favourites.count < maxFavourites else {
+            showMaxFavouritesAlert = true
+            return
+        }
+        
         if !favourites.contains(symbol) {
             favourites.append(symbol)
             saveFavourites()
@@ -32,7 +39,7 @@ class FavouritesManager: ObservableObject {
     func removeFavourite(_ symbol: String) {
         if let index = favourites.firstIndex(of: symbol) {
             favourites.remove(at: index)
-            favouritesDetials.removeValue(forKey: symbol)
+            favouritesDetails.removeValue(forKey: symbol)
             saveFavourites()
         }
     }
@@ -53,7 +60,7 @@ class FavouritesManager: ObservableObject {
         FinancialDataAPI.shared.getFinancialData(symbol: symbol) { [weak self] success in
             guard success, let data = FinancialDataAPI.shared.cryptoFinancialData else { return }
             DispatchQueue.main.async {
-                self?.favouritesDetials[symbol] = data
+                self?.favouritesDetails[symbol] = data
             }
         }
     }
