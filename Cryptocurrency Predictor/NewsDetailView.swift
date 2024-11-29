@@ -54,6 +54,8 @@ struct NewsDetailView: View {
     }
 }
 
+//Implement a Safari view inside the news detail view - stakeholder feedback from expereinced investor. Do this in sprint 6 - UI improvements.
+
 #Preview {
     NewsDetailView(article: Article(uuid: "9b9fb67e-9438-4263-815e-ef6a7d36af07", title: "Test", description: "Test", snippet: "", url: "Test", image_url: "", published_at: "", source: ""))
 }
