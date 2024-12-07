@@ -18,6 +18,14 @@ struct CryptoHistoricalData: Codable, Identifiable {
     let changePercent: Double
     let close: Double
     let label: String
+    let open: Double
+    let high: Double
+    let low: Double
+    let volume: Double
+    let adjClose: Double
+    let unadjustedVolume: Double
+    let vwap: Double
+    let changeOverTime: Double
     
     var newDate: Date? {
         let dateFormatter = DateFormatter()
