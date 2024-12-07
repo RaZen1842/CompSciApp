@@ -46,6 +46,6 @@ struct CryptoChartView: View {
 
 #Preview {
     CryptoChartView(cryptoHistoricalData: [
-        CryptoHistoricalData(date: "2024-10-09", change: 0.58, changePercent: 5.4, close: 80000, label: "")
+        CryptoHistoricalData(date: "2024-10-09", change: 0.58, changePercent: 5.4, close: 80000, label: "", open: 79999, high: 80001, low: 79999, volume: 1000000, adjClose: 80000, unadjustedVolume: 0, vwap: 0, changeOverTime: 0)
     ])
 }

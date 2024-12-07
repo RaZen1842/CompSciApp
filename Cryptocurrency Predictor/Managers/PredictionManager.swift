@@ -8,6 +8,7 @@
 import Foundation
 
 class PredictionManager: ObservableObject {
+    static let shared = PredictionManager()
     @Published var predictedPrices: [Double] = []
     private let predictionEndpoint = "http://127.0.0.1:8000/predict"
     

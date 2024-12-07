@@ -12,6 +12,7 @@ struct CryptoDetailView: View {
     @ObservedObject var financialApiManager = FinancialDataAPI.shared
     @ObservedObject var historicalApiManager = HistoricalFinancialDataAPI.shared
     @ObservedObject var favouritesManager = FavouritesManager.shared
+    @ObservedObject var predictionManager = PredictionManager.shared
     
     @State private var isLoading = true
     @State private var isHistoricalDataLoading = true
@@ -70,8 +71,31 @@ struct CryptoDetailView: View {
                     historicalApiManager.getAllCryptoHistoricalData(symbol: adjustedSymbol) { success in
                         DispatchQueue.main.async {
                             isHistoricalDataLoading = false
+                            
+                            if success {
+                                predictionManager.getPredictions(for: adjustedSymbol) { predictionSuccess in
+                                    if predictionSuccess {
+                                        print("Prediction fetched successfully")
+                                    } else {
+                                        print("Failed to fetch predictions")
+                                    }
+                                }
+                            }
                         }
                     }
+                }
+            }
+            
+            //Predicted Prices
+            if !predictionManager.predictedPrices.isEmpty {
+                Section(header: Text("Predicted Prices")) {
+                    ForEach(predictionManager.predictedPrices, id: \.self) { price in
+                        Text("Predicted Prices: $\(price, specifier: "%.2f")")
+                    }
+                }
+            } else {
+                Section(header: Text("Predicted Prices")) {
+                    Text("No predictions available")
                 }
             }
             
