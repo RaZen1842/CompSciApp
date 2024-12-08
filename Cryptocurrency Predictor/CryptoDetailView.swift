@@ -95,7 +95,7 @@ struct CryptoDetailView: View {
                 }
             } else {
                 Section(header: Text("Predicted Prices")) {
-                    Text("No predictions available")
+                    Text("Loading predictions...")
                 }
             }
             
