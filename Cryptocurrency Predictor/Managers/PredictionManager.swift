@@ -82,13 +82,21 @@ class PredictionManager: ObservableObject {
                     return
                 }
                 
-                if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: [Double]], let predictions = json["predicted_prices"] {
-                    DispatchQueue.main.async {
-                        self.predictedPrices = predictions
-                        completion(true)
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let predictions = json["predicted_prices"] as? [Double] {
+                        
+                        DispatchQueue.main.async {
+                            self.predictedPrices = predictions
+                            completion(true)
+                        }
+                    } else {
+                        print("Failed to parse prediction response")
+                        DispatchQueue.main.async {
+                            completion(false)
+                        }
                     }
-                } else {
-                    print("Failed to parse prediction response")
+                } catch {
+                    print("JSON decoding error: \(error.localizedDescription)")
                     DispatchQueue.main.async {
                         completion(false)
                     }
