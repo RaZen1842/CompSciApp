@@ -16,6 +16,7 @@ final class Cryptocurrency_PredictorTests: XCTestCase {
     var historicalApi: HistoricalFinancialDataAPI!
     var discoverCurrenciesApi: DiscoverCurrenciesAPI!
     var newsApi: NewsAPI!
+    var predictionManager: PredictionManager!
     
     
     override func setUpWithError() throws {
@@ -24,6 +25,7 @@ final class Cryptocurrency_PredictorTests: XCTestCase {
         historicalApi = HistoricalFinancialDataAPI()
         discoverCurrenciesApi = DiscoverCurrenciesAPI()
         newsApi = NewsAPI()
+        predictionManager = PredictionManager()
     }
         
     override func tearDownWithError() throws {
@@ -32,6 +34,7 @@ final class Cryptocurrency_PredictorTests: XCTestCase {
         historicalApi = nil
         discoverCurrenciesApi = nil
         newsApi = nil
+        predictionManager = nil
     }
         
     func testSearchCryptos() throws {
@@ -130,5 +133,37 @@ final class Cryptocurrency_PredictorTests: XCTestCase {
             }
         }
         waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    //Prediction Manager Test Cases
+    
+    func testPredictionManager() throws {
+        let expectation = self.expectation(description: "Fetching predictions for BTCUSD from API")
+        
+        //dummy data for HistoricalFinancialDataAPI
+        historicalApi.getAllCryptoHistoricalData(symbol: "BTCUSD") { success in
+            DispatchQueue.main.async {
+                XCTAssertTrue(success, "Historical data fetch should succeed")
+                XCTAssertNotNil(self.historicalApi.allData, "Historical data should not be nil")
+                XCTAssertFalse(self.historicalApi.allData.isEmpty, "Historical data should have values")
+                
+                //getting predictions
+                self.predictionManager.getPredictions(for: "BTCUSD") { success in
+                    DispatchQueue.main.async {
+                        XCTAssertTrue(success, "Prediction API call should be successful")
+                        XCTAssertNotNil(self.predictionManager.predictedPrices, "Predicted prices should not be nil")
+                        XCTAssertFalse(self.predictionManager.predictedPrices.isEmpty, "Predicted prices should have values")
+                        
+                        if let firstPrice = self.predictionManager.predictedPrices.first {
+                            XCTAssertGreaterThan(firstPrice, 0, "First predicted price should be greater than 0")
+                        }
+                        
+                        expectation.fulfill()
+                    }
+                }
+            }
+        }
+        
+        waitForExpectations(timeout: 70, handler: nil)
     }
 }
