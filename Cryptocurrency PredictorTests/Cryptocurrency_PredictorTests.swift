@@ -88,7 +88,7 @@ final class Cryptocurrency_PredictorTests: XCTestCase {
                 XCTAssertFalse(self.historicalApi.allData.isEmpty, "Historical Data should have values")
                 
                 if let firstEntry = self.historicalApi.allData.first {
-                    XCTAssertEqual(firstEntry.date, "2024-11-03")
+                    XCTAssertEqual(firstEntry.date, "2025-03-08")
                 }
                 
                 expectation.fulfill()

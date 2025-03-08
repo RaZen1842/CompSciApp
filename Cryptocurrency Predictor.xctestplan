@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "3FD073BA-97E9-40F5-9A66-298AC50DA17E",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Cryptocurrency Predictor.xcodeproj",
+      "identifier" : "8598301A2C8B3B1F006E4B26",
+      "name" : "Cryptocurrency Predictor"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Cryptocurrency Predictor.xcodeproj",
+        "identifier" : "8598302A2C8B3B22006E4B26",
+        "name" : "Cryptocurrency PredictorTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Cryptocurrency Predictor.xcodeproj",
+        "identifier" : "859830342C8B3B22006E4B26",
+        "name" : "Cryptocurrency PredictorUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

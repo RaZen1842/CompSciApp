@@ -58,6 +58,7 @@
 		272334042CEBEF4800D010B5 /* NewsAPIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIResult.swift; sourceTree = "<group>"; };
 		272EC59A2CD67C0D008D0334 /* DiscoveredCryptoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveredCryptoResult.swift; sourceTree = "<group>"; };
 		276DB3BC2CAC5ACF005243A4 /* CryptoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDetailView.swift; sourceTree = "<group>"; };
+		277771782D7C44E200B4A72C /* Cryptocurrency Predictor.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Cryptocurrency Predictor.xctestplan"; sourceTree = "<group>"; };
 		2788E9392CE901730035F447 /* SearchCurrenciesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCurrenciesAPI.swift; sourceTree = "<group>"; };
 		2788E93B2CE9021A0035F447 /* SearchAPIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPIResult.swift; sourceTree = "<group>"; };
 		279A8EF42CECF8F3009B06CE /* NewsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailView.swift; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 		859830122C8B3B1F006E4B26 = {
 			isa = PBXGroup;
 			children = (
+				277771782D7C44E200B4A72C /* Cryptocurrency Predictor.xctestplan */,
 				8598301D2C8B3B20006E4B26 /* Cryptocurrency Predictor */,
 				8598302E2C8B3B22006E4B26 /* Cryptocurrency PredictorTests */,
 				859830382C8B3B22006E4B26 /* Cryptocurrency PredictorUITests */,
